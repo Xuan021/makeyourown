@@ -3,134 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Site Generator — thatsme.github.io</title>
+<title>Website Generator — by Xuan021</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #1a2744; --gold: #c9a84c; --gold-light: #f0d98a;
-    --cream: #faf8f3; --white: #ffffff; --text: #2c3452;
-    --muted: #7a809a; --border: #e8e4da; --red: #e05050;
-    --green: #2e9e6b;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+  :root { --navy:#1a2744; --gold:#c9a84c; --gold-light:#f0d98a; --cream:#faf8f3; --text:#2c3452; --muted:#7a809a; --border:#e8e4da; --green:#2e9e6b; --red:#e05050; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); min-height:100vh; }
 
-  /* HEADER */
-  header {
-    background: var(--navy); padding: 2rem 5%;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.3rem; }
-  .logo span { color: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 300; display: block; margin-top: 2px; }
-  .steps-bar { display: flex; gap: 0.5rem; align-items: center; }
-  .step-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 500; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); transition: all 0.3s; }
-  .step-dot.active { background: var(--gold); color: var(--navy); }
-  .step-dot.done { background: var(--green); color: white; }
-  .step-line { width: 24px; height: 1px; background: rgba(255,255,255,0.15); }
+  header { background:var(--navy); padding:1.5rem 5%; display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:'Playfair Display',serif; color:var(--gold); font-size:1.2rem; }
+  .logo small { color:rgba(255,255,255,0.4); font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:300; display:block; }
 
-  /* MAIN */
-  main { max-width: 720px; margin: 0 auto; padding: 3rem 5% 6rem; }
+  main { max-width:700px; margin:0 auto; padding:2.5rem 5% 5rem; }
+  h1 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--navy); margin-bottom:0.4rem; }
+  .intro { color:var(--muted); font-size:0.92rem; margin-bottom:2.5rem; }
 
-  .section-block {
-    background: white; border-radius: 16px; padding: 2rem;
-    border: 1px solid var(--border); margin-bottom: 1.5rem;
-    transition: box-shadow 0.2s;
-  }
-  .section-block:hover { box-shadow: 0 4px 20px rgba(26,39,68,0.06); }
-  .block-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
-  .block-icon { width: 36px; height: 36px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-  .block-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); }
-  .block-subtitle { font-size: 0.8rem; color: var(--muted); }
+  .card { background:white; border-radius:14px; padding:1.8rem; border:1px solid var(--border); margin-bottom:1.2rem; }
+  .card-header { display:flex; align-items:center; gap:0.8rem; margin-bottom:1.4rem; }
+  .card-icon { width:34px; height:34px; background:var(--navy); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.95rem; flex-shrink:0; }
+  .card-title { font-family:'Playfair Display',serif; font-size:1rem; color:var(--navy); }
+  .card-sub { font-size:0.78rem; color:var(--muted); }
 
-  /* FORM ELEMENTS */
-  .field { margin-bottom: 1.2rem; }
-  .field:last-child { margin-bottom: 0; }
-  label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text); margin-bottom: 0.4rem; }
-  label .req { color: var(--gold); margin-left: 2px; }
-  label .hint { color: var(--muted); font-weight: 300; margin-left: 6px; font-size: 0.78rem; }
-  input[type=text], input[type=tel], input[type=url], textarea, select {
-    width: 100%; padding: 10px 14px; border: 1.5px solid var(--border);
-    border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    color: var(--text); background: var(--cream); outline: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  input:focus, textarea:focus, select:focus { border-color: var(--gold); background: white; }
-  textarea { resize: vertical; min-height: 80px; }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+  .field { margin-bottom:1.1rem; }
+  .field:last-child { margin-bottom:0; }
+  label { display:block; font-size:0.82rem; font-weight:500; color:var(--text); margin-bottom:0.35rem; }
+  .req { color:var(--gold); }
+  .hint { color:var(--muted); font-weight:300; font-size:0.76rem; margin-left:4px; }
+  input, textarea, select { width:100%; padding:10px 13px; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--cream); outline:none; transition:border-color 0.2s; }
+  input:focus, textarea:focus { border-color:var(--gold); background:white; }
+  textarea { resize:vertical; min-height:75px; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media(max-width:520px) { .row2 { grid-template-columns:1fr; } }
 
-  /* SERVICE CARDS */
-  .service-entry {
-    border: 1.5px solid var(--border); border-radius: 12px; padding: 1.2rem;
-    margin-bottom: 1rem; background: var(--cream); position: relative;
-  }
-  .service-entry:last-child { margin-bottom: 0; }
-  .svc-num {
-    position: absolute; top: -10px; left: 16px;
-    background: var(--navy); color: var(--gold); font-size: 0.72rem;
-    font-weight: 600; padding: 2px 10px; border-radius: 10px; letter-spacing: 0.05em;
-  }
-  .icon-picker { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
-  .icon-option {
-    width: 36px; height: 36px; border: 1.5px solid var(--border); border-radius: 8px;
-    display: flex; align-items: center; justify-content: center; cursor: pointer;
-    font-size: 1.1rem; transition: all 0.15s; background: white;
-  }
-  .icon-option:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
-  .icon-option.selected { border-color: var(--gold); background: rgba(201,168,76,0.15); }
+  .svc-block { border:1.5px solid var(--border); border-radius:10px; padding:1.2rem; margin-bottom:1rem; background:var(--cream); position:relative; }
+  .svc-label { position:absolute; top:-10px; left:14px; background:var(--navy); color:var(--gold); font-size:0.7rem; font-weight:600; padding:2px 10px; border-radius:10px; letter-spacing:0.05em; }
+  .icon-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:0.9rem; }
+  .ic { width:34px; height:34px; border:1.5px solid var(--border); border-radius:7px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1rem; background:white; transition:all 0.15s; }
+  .ic:hover { border-color:var(--gold); }
+  .ic.sel { border-color:var(--gold); background:rgba(201,168,76,0.12); }
 
-  /* WHATSAPP */
-  .wa-wrap { position: relative; }
-  .wa-prefix {
-    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-    font-size: 0.88rem; color: var(--muted); pointer-events: none;
-  }
-  .wa-wrap input { padding-left: 90px; }
+  .wa-wrap { position:relative; }
+  .wa-pre { position:absolute; left:13px; top:50%; transform:translateY(-50%); font-size:0.85rem; color:var(--muted); pointer-events:none; }
+  .wa-wrap input { padding-left:80px; }
 
-  /* AVATAR PREVIEW */
-  .avatar-preview {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--navy), #2c3e6e);
-    border: 2px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold);
-    flex-shrink: 0;
-  }
-  .preview-row { display: flex; align-items: center; gap: 1rem; }
-  .preview-info { flex: 1; }
-  .preview-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); }
-  .preview-role { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+  /* live preview card */
+  .prev-wrap { display:flex; align-items:center; gap:1rem; background:var(--cream); border-radius:10px; padding:0.9rem 1rem; margin-bottom:1.4rem; }
+  .prev-av { width:52px; height:52px; border-radius:50%; border:2px solid var(--gold); background:linear-gradient(135deg,var(--navy),#2c3e6e); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--gold); flex-shrink:0; }
+  .prev-name { font-family:'Playfair Display',serif; font-size:0.95rem; color:var(--navy); }
+  .prev-role { font-size:0.78rem; color:var(--muted); }
 
-  /* DOWNLOAD BUTTON */
-  .download-area {
-    background: var(--navy); border-radius: 16px; padding: 2.5rem;
-    text-align: center; margin-top: 2rem;
-  }
-  .download-area h3 { font-family: 'Playfair Display', serif; color: white; font-size: 1.3rem; margin-bottom: 0.5rem; }
-  .download-area p { color: rgba(255,255,255,0.5); font-size: 0.88rem; margin-bottom: 1.8rem; }
-  .btn-download {
-    background: var(--gold); color: var(--navy); border: none;
-    padding: 15px 40px; border-radius: 8px; font-weight: 600;
-    font-family: 'DM Sans', sans-serif; font-size: 1rem;
-    cursor: pointer; transition: all 0.2s; display: inline-flex;
-    align-items: center; gap: 0.6rem;
-  }
-  .btn-download:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
-  .btn-download:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-  .validation-msg { font-size: 0.82rem; color: var(--red); margin-top: 1rem; display: none; }
-  .success-msg { font-size: 0.88rem; color: var(--gold-light); margin-top: 1rem; display: none; }
+  .dl-box { background:var(--navy); border-radius:14px; padding:2rem; text-align:center; margin-top:1.5rem; }
+  .dl-box h3 { font-family:'Playfair Display',serif; color:white; margin-bottom:0.4rem; }
+  .dl-box p { color:rgba(255,255,255,0.45); font-size:0.85rem; margin-bottom:1.5rem; }
+  .btn-dl { background:var(--gold); color:var(--navy); border:none; padding:13px 36px; border-radius:7px; font-weight:700; font-family:'DM Sans',sans-serif; font-size:0.95rem; cursor:pointer; transition:all 0.2s; }
+  .btn-dl:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 20px rgba(201,168,76,0.25); }
+  .err { color:#f87c7c; font-size:0.82rem; margin-top:0.8rem; display:none; }
+  .ok { color:var(--gold-light); font-size:0.85rem; margin-top:0.8rem; display:none; }
 
-  /* NEXT STEPS */
-  .next-steps {
-    background: white; border-radius: 12px; padding: 1.5rem;
-    border: 1px solid var(--border); margin-top: 1.5rem; display: none;
-  }
-  .next-steps h4 { font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 1rem; }
-  .next-step { display: flex; gap: 0.8rem; margin-bottom: 0.8rem; align-items: flex-start; }
-  .step-n { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 0.72rem; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-  .step-text { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
-  .step-text strong { color: var(--text); }
+  .steps { background:white; border-radius:12px; padding:1.4rem; border:1px solid var(--border); margin-top:1.2rem; display:none; }
+  .steps h4 { font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:0.9rem; }
+  .step { display:flex; gap:0.7rem; margin-bottom:0.7rem; align-items:flex-start; }
+  .sn { width:20px; height:20px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:0.68rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .st { font-size:0.85rem; color:var(--muted); line-height:1.5; }
+  .st strong { color:var(--text); }
 </style>
 </head>
 <body>
@@ -138,435 +74,490 @@
 <header>
   <div class="logo">
     Site Generator
-    <span>by thatsme.github.io · Xuan021</span>
-  </div>
-  <div class="steps-bar">
-    <div class="step-dot active" id="s1">1</div>
-    <div class="step-line"></div>
-    <div class="step-dot" id="s2">2</div>
-    <div class="step-line"></div>
-    <div class="step-dot" id="s3">3</div>
+    <small>by Xuan021 · thatsme.github.io</small>
   </div>
 </header>
 
 <main>
-  <div style="margin-bottom:2rem;">
-    <div style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--navy); margin-bottom:0.4rem;">Build Your Website</div>
-    <div style="color:var(--muted); font-size:0.92rem;">Fill in your details below. Your personal <code style="background:var(--border);padding:2px 6px;border-radius:4px;font-size:0.82rem;">index.html</code> will be ready to download instantly.</div>
+  <h1>Build Your Website</h1>
+  <p class="intro">Fill in your details — get a fully working <code style="background:var(--border);padding:1px 6px;border-radius:4px;font-size:0.8rem;">index.html</code> identical to the original template, ready to upload.</p>
+
+  <!-- PERSONAL -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">👤</div>
+      <div><div class="card-title">Personal Info</div><div class="card-sub">Your name, tagline and bio</div></div>
+    </div>
+    <div class="prev-wrap">
+      <div class="prev-av" id="pav">?</div>
+      <div><div class="prev-name" id="pname">Your Name</div><div class="prev-role" id="prole">Your tagline here</div></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Full Name <span class="req">*</span></label><input id="f-name" placeholder="e.g. Siti Aisyah" oninput="lp()"></div>
+      <div class="field"><label>Chinese Name <span class="hint">optional</span></label><input id="f-namezh" placeholder="e.g. 思蒂"></div>
+    </div>
+    <div class="field"><label>Tagline (English) <span class="req">*</span></label><input id="f-tag" placeholder="e.g. Custom Curtain Specialist" oninput="lp()"></div>
+    <div class="field"><label>Tagline (Chinese) <span class="hint">optional</span></label><input id="f-tagzh" placeholder="e.g. 定制窗帘专家"></div>
+    <div class="field"><label>Bio (English) <span class="req">*</span></label><textarea id="f-bio" placeholder="Tell visitors who you are in 2-3 sentences..."></textarea></div>
+    <div class="field"><label>Bio (Chinese) <span class="hint">optional</span></label><textarea id="f-biozh" placeholder="用中文介绍一下自己..."></textarea></div>
+    <div class="row2">
+      <div class="field"><label>Avatar Letter <span class="hint">1 char shown in circle</span></label><input id="f-av" placeholder="A" maxlength="1" style="font-size:1.2rem;text-align:center;" oninput="lp()"></div>
+      <div class="field"><label>&nbsp;</label></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Stat 1 Number</label><input id="f-s1n" placeholder="120+"></div>
+      <div class="field"><label>Stat 1 Label (EN)</label><input id="f-s1l" placeholder="Clients"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Stat 1 Label (中文)</label><input id="f-s1lz" placeholder="客户"></div>
+      <div class="field"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Stat 2 Number</label><input id="f-s2n" placeholder="8yr"></div>
+      <div class="field"><label>Stat 2 Label (EN)</label><input id="f-s2l" placeholder="Experience"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Stat 2 Label (中文)</label><input id="f-s2lz" placeholder="年经验"></div>
+      <div class="field"></div>
+    </div>
+    <div class="field"><label>Badges (EN) <span class="hint">comma-separated, max 4</span></label><input id="f-badges" placeholder="Licensed, KL & Selangor, Free Quote"></div>
+    <div class="field"><label>Badges (中文) <span class="hint">comma-separated</span></label><input id="f-badgeszh" placeholder="持牌, 吉隆坡, 免费报价"></div>
   </div>
 
-  <!-- BLOCK 1: PERSONAL INFO -->
-  <div class="section-block">
-    <div class="block-header">
-      <div class="block-icon">👤</div>
-      <div>
-        <div class="block-title">Personal Info</div>
-        <div class="block-subtitle">Your name and how you want to be introduced</div>
-      </div>
+  <!-- SERVICES -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🛠️</div>
+      <div><div class="card-title">Services</div><div class="card-sub">Up to 3 — leave Service 2 & 3 blank to hide them</div></div>
     </div>
-
-    <div class="preview-row" style="margin-bottom:1.5rem; padding:1rem; background:var(--cream); border-radius:10px;">
-      <div class="avatar-preview" id="avatar-prev">?</div>
-      <div class="preview-info">
-        <div class="preview-name" id="prev-name">Your Name</div>
-        <div class="preview-role" id="prev-role">Your tagline will appear here</div>
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label>Full Name <span class="req">*</span></label>
-        <input type="text" id="f-name" placeholder="e.g. Siti Aisyah" oninput="livePreview()">
-      </div>
-      <div class="field">
-        <label>Name in Chinese <span class="hint">optional</span></label>
-        <input type="text" id="f-namezh" placeholder="e.g. 思蒂" oninput="livePreview()">
-      </div>
-    </div>
-    <div class="field">
-      <label>Tagline (English) <span class="req">*</span></label>
-      <input type="text" id="f-tagline" placeholder="e.g. Custom Curtains & Interior Specialist" oninput="livePreview()">
-    </div>
-    <div class="field">
-      <label>Tagline (Chinese) <span class="hint">optional</span></label>
-      <input type="text" id="f-taglinezh" placeholder="e.g. 定制窗帘 · 室内设计专家">
-    </div>
-    <div class="field">
-      <label>About You (English) <span class="req">*</span></label>
-      <textarea id="f-bio" placeholder="Tell visitors who you are and what you do. Keep it friendly and personal — 2-3 sentences." oninput="updateSteps()"></textarea>
-    </div>
-    <div class="field">
-      <label>About You (Chinese) <span class="hint">optional</span></label>
-      <textarea id="f-biozh" placeholder="用中文介绍一下自己..."></textarea>
-    </div>
-    <div class="field-row">
-      <div class="field">
-        <label>Stat 1 — Number <span class="hint">e.g. 50+</span></label>
-        <input type="text" id="f-stat1n" placeholder="50+">
-      </div>
-      <div class="field">
-        <label>Stat 1 — Label <span class="hint">e.g. Happy Clients</span></label>
-        <input type="text" id="f-stat1l" placeholder="Happy Clients">
-      </div>
-    </div>
-    <div class="field-row">
-      <div class="field">
-        <label>Stat 2 — Number <span class="hint">e.g. 8yr</span></label>
-        <input type="text" id="f-stat2n" placeholder="8yr">
-      </div>
-      <div class="field">
-        <label>Stat 2 — Label <span class="hint">e.g. Experience</span></label>
-        <input type="text" id="f-stat2l" placeholder="Experience">
-      </div>
-    </div>
+    <div id="svcs"></div>
   </div>
 
-  <!-- BLOCK 2: SERVICES -->
-  <div class="section-block">
-    <div class="block-header">
-      <div class="block-icon">🛠️</div>
-      <div>
-        <div class="block-title">Your Services</div>
-        <div class="block-subtitle">Up to 3 — describe what you offer</div>
-      </div>
+  <!-- CONTACT -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📱</div>
+      <div><div class="card-title">Contact</div><div class="card-sub">How visitors reach you</div></div>
     </div>
-
-    <div id="services-container">
-      <!-- Service 1 -->
-      <div class="service-entry">
-        <div class="svc-num">SERVICE 1</div>
-        <div class="field" style="margin-top:0.5rem; margin-bottom:0.8rem;">
-          <label>Pick an icon</label>
-          <div class="icon-picker" id="icons-0"></div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label>Title (EN) <span class="req">*</span></label>
-            <input type="text" id="s0-title" placeholder="e.g. Custom Curtains">
-          </div>
-          <div class="field">
-            <label>Title (中文)</label>
-            <input type="text" id="s0-titlezh" placeholder="e.g. 定制窗帘">
-          </div>
-        </div>
-        <div class="field">
-          <label>Description (EN) <span class="req">*</span></label>
-          <textarea id="s0-desc" placeholder="What do you offer? Who is it for?" style="min-height:60px;"></textarea>
-        </div>
-        <div class="field">
-          <label>Description (中文)</label>
-          <textarea id="s0-desczh" placeholder="用中文描述您的服务..." style="min-height:60px;"></textarea>
-        </div>
-      </div>
-      <!-- Service 2 -->
-      <div class="service-entry">
-        <div class="svc-num">SERVICE 2</div>
-        <div class="field" style="margin-top:0.5rem; margin-bottom:0.8rem;">
-          <label>Pick an icon</label>
-          <div class="icon-picker" id="icons-1"></div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label>Title (EN)</label>
-            <input type="text" id="s1-title" placeholder="e.g. Free Home Measurement">
-          </div>
-          <div class="field">
-            <label>Title (中文)</label>
-            <input type="text" id="s1-titlezh" placeholder="e.g. 免费上门测量">
-          </div>
-        </div>
-        <div class="field">
-          <label>Description (EN)</label>
-          <textarea id="s1-desc" placeholder="Optional — leave blank to hide this card" style="min-height:60px;"></textarea>
-        </div>
-        <div class="field">
-          <label>Description (中文)</label>
-          <textarea id="s1-desczh" placeholder="可选 — 留空则隐藏此服务" style="min-height:60px;"></textarea>
-        </div>
-      </div>
-      <!-- Service 3 -->
-      <div class="service-entry">
-        <div class="svc-num">SERVICE 3</div>
-        <div class="field" style="margin-top:0.5rem; margin-bottom:0.8rem;">
-          <label>Pick an icon</label>
-          <div class="icon-picker" id="icons-2"></div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label>Title (EN)</label>
-            <input type="text" id="s2-title" placeholder="e.g. Installation">
-          </div>
-          <div class="field">
-            <label>Title (中文)</label>
-            <input type="text" id="s2-titlezh" placeholder="e.g. 安装服务">
-          </div>
-        </div>
-        <div class="field">
-          <label>Description (EN)</label>
-          <textarea id="s2-desc" placeholder="Optional — leave blank to hide this card" style="min-height:60px;"></textarea>
-        </div>
-        <div class="field">
-          <label>Description (中文)</label>
-          <textarea id="s2-desczh" placeholder="可选 — 留空则隐藏此服务" style="min-height:60px;"></textarea>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BLOCK 3: CONTACT -->
-  <div class="section-block">
-    <div class="block-header">
-      <div class="block-icon">📱</div>
-      <div>
-        <div class="block-title">Contact & WhatsApp</div>
-        <div class="block-subtitle">How visitors will reach you</div>
-      </div>
-    </div>
-    <div class="field">
-      <label>WhatsApp Number <span class="req">*</span></label>
-      <div class="wa-wrap">
-        <span class="wa-prefix">+60</span>
-        <input type="tel" id="f-wa" placeholder="123456789" oninput="updateSteps()">
-      </div>
-    </div>
-    <div class="field">
-      <label>Email Address <span class="hint">optional</span></label>
-      <input type="text" id="f-email" placeholder="hello@youremail.com">
-    </div>
-    <div class="field-row">
-      <div class="field">
-        <label>Instagram URL <span class="hint">optional</span></label>
-        <input type="url" id="f-ig" placeholder="https://instagram.com/...">
-      </div>
-      <div class="field">
-        <label>LinkedIn URL <span class="hint">optional</span></label>
-        <input type="url" id="f-li" placeholder="https://linkedin.com/in/...">
-      </div>
-    </div>
-    <div class="field">
-      <label>Trust Badges <span class="hint">comma-separated, max 4</span></label>
-      <input type="text" id="f-badges" placeholder="e.g. KL & Selangor, 10yr Experience, Free Quote">
+    <div class="field"><label>WhatsApp Number <span class="req">*</span></label><div class="wa-wrap"><span class="wa-pre">+60 &nbsp;</span><input id="f-wa" type="tel" placeholder="123456789"></div></div>
+    <div class="field"><label>Email <span class="hint">optional</span></label><input id="f-email" placeholder="hello@email.com"></div>
+    <div class="row2">
+      <div class="field"><label>Instagram URL</label><input id="f-ig" placeholder="https://instagram.com/..."></div>
+      <div class="field"><label>LinkedIn URL</label><input id="f-li" placeholder="https://linkedin.com/in/..."></div>
     </div>
   </div>
 
   <!-- DOWNLOAD -->
-  <div class="download-area">
-    <h3>Ready to Generate</h3>
-    <p>Fill in your name, tagline, bio and WhatsApp number — then download your site.</p>
-    <button class="btn-download" id="dl-btn" onclick="generateAndDownload()">
-      ⬇ Download My index.html
-    </button>
-    <div class="validation-msg" id="val-msg"></div>
-    <div class="success-msg" id="success-msg">✅ Downloaded! Now upload to your GitHub repo.</div>
+  <div class="dl-box">
+    <h3>Generate & Download</h3>
+    <p>Your file will be the exact same design as the original — with your details filled in.</p>
+    <button class="btn-dl" onclick="generate()">⬇ Download My index.html</button>
+    <div class="err" id="err"></div>
+    <div class="ok" id="ok">✅ Downloaded! Upload it to your GitHub repo to go live.</div>
   </div>
 
-  <div class="next-steps" id="next-steps">
-    <h4>🚀 What to do next</h4>
-    <div class="next-step"><div class="step-n">1</div><div class="step-text">Go to your GitHub repo → <strong>Add file → Upload files</strong></div></div>
-    <div class="next-step"><div class="step-n">2</div><div class="step-text">Drag in your downloaded <strong>index.html</strong> and click <strong>Commit changes</strong></div></div>
-    <div class="next-step"><div class="step-n">3</div><div class="step-text">Go to <strong>Settings → Pages</strong> → set branch to <strong>main</strong> → Save</div></div>
-    <div class="next-step"><div class="step-n">4</div><div class="step-text">Wait 2 minutes, then visit <strong>yourusername.github.io</strong> 🎉</div></div>
+  <div class="steps" id="steps">
+    <h4>🚀 Next Steps</h4>
+    <div class="step"><div class="sn">1</div><div class="st">Go to your GitHub repo → <strong>Add file → Upload files</strong></div></div>
+    <div class="step"><div class="sn">2</div><div class="st">Upload your <strong>index.html</strong> → click <strong>Commit changes</strong></div></div>
+    <div class="step"><div class="sn">3</div><div class="st">Settings → Pages → branch: <strong>main</strong>, folder: <strong>/ (root)</strong> → Save</div></div>
+    <div class="step"><div class="sn">4</div><div class="st">Wait 2–5 min → visit <strong>yourusername.github.io/yourrepo</strong> 🎉</div></div>
   </div>
 </main>
 
 <script>
-// ── ICON OPTIONS ────────────────────────────────────────────────────────────
 const ICONS = ['📈','🛡️','💬','🏠','✂️','🗺️','💆','💪','🌿','⭐','🎯','🤝','📐','🔧','💎','🧵','📍','🩺','🏋️','🌟'];
-const selectedIcons = ['📈','🛡️','💬'];
+const selIcons = ['📈','🛡️','💬'];
 
-function buildIconPickers() {
-  for (let i = 0; i < 3; i++) {
-    const wrap = document.getElementById(`icons-${i}`);
-    ICONS.forEach(icon => {
+function buildSvcs() {
+  const wrap = document.getElementById('svcs');
+  for(let i=0;i<3;i++){
+    const d = document.createElement('div');
+    d.className = 'svc-block';
+    d.innerHTML = `<div class="svc-label">SERVICE ${i+1}</div>
+      <div style="margin-top:0.6rem;margin-bottom:0.8rem;"><label style="font-size:0.8rem;color:var(--muted);margin-bottom:0.5rem;display:block;">Icon</label><div class="icon-row" id="ir${i}"></div></div>
+      <div class="row2">
+        <div class="field"><label>Title (EN)${i===0?' <span class="req">*</span>':''}</label><input id="s${i}t" placeholder="e.g. My Service"></div>
+        <div class="field"><label>Title (中文)</label><input id="s${i}tz" placeholder="e.g. 我的服务"></div>
+      </div>
+      <div class="field"><label>Description (EN)${i===0?' <span class="req">*</span>':''}</label><textarea id="s${i}d" placeholder="${i===0?'What do you offer?':'Optional — leave blank to skip'}" style="min-height:55px;"></textarea></div>
+      <div class="field"><label>Description (中文)</label><textarea id="s${i}dz" placeholder="可选" style="min-height:55px;"></textarea></div>`;
+    wrap.appendChild(d);
+    const ir = document.getElementById('ir'+i);
+    ICONS.forEach(ic => {
       const el = document.createElement('div');
-      el.className = 'icon-option' + (icon === selectedIcons[i] ? ' selected' : '');
-      el.textContent = icon;
-      el.onclick = () => {
-        wrap.querySelectorAll('.icon-option').forEach(e => e.classList.remove('selected'));
-        el.classList.add('selected');
-        selectedIcons[i] = icon;
-      };
-      wrap.appendChild(el);
+      el.className = 'ic' + (ic===selIcons[i]?' sel':'');
+      el.textContent = ic;
+      el.onclick = () => { ir.querySelectorAll('.ic').forEach(e=>e.classList.remove('sel')); el.classList.add('sel'); selIcons[i]=ic; };
+      ir.appendChild(el);
     });
   }
 }
-buildIconPickers();
+buildSvcs();
 
-// ── LIVE PREVIEW ─────────────────────────────────────────────────────────────
-function livePreview() {
-  const name = document.getElementById('f-name').value.trim();
-  const role = document.getElementById('f-tagline').value.trim();
-  document.getElementById('prev-name').textContent = name || 'Your Name';
-  document.getElementById('prev-role').textContent = role || 'Your tagline will appear here';
-  document.getElementById('avatar-prev').textContent = name ? name[0].toUpperCase() : '?';
-  updateSteps();
-}
-
-function updateSteps() {
+function lp() {
   const n = document.getElementById('f-name').value.trim();
-  const b = document.getElementById('f-bio').value.trim();
-  const w = document.getElementById('f-wa').value.trim();
-  document.getElementById('s1').className = 'step-dot ' + (n ? 'done' : 'active');
-  document.getElementById('s2').className = 'step-dot ' + (b ? 'done' : (n ? 'active' : ''));
-  document.getElementById('s3').className = 'step-dot ' + (w ? 'done' : (b ? 'active' : ''));
+  const r = document.getElementById('f-tag').value.trim();
+  const av = document.getElementById('f-av').value.trim();
+  document.getElementById('pname').textContent = n || 'Your Name';
+  document.getElementById('prole').textContent = r || 'Your tagline here';
+  document.getElementById('pav').textContent = av || (n ? n[0].toUpperCase() : '?');
 }
 
-// ── VALIDATE ─────────────────────────────────────────────────────────────────
-function validate() {
-  const checks = [
-    [!document.getElementById('f-name').value.trim(), 'Please enter your name.'],
-    [!document.getElementById('f-tagline').value.trim(), 'Please enter your tagline.'],
-    [!document.getElementById('f-bio').value.trim(), 'Please write a short bio.'],
-    [!document.getElementById('s0-title').value.trim(), 'Please add at least one service title.'],
-    [!document.getElementById('s0-desc').value.trim(), 'Please add a description for Service 1.'],
-    [!document.getElementById('f-wa').value.trim(), 'Please enter your WhatsApp number.'],
-  ];
-  for (const [fail, msg] of checks) { if (fail) return msg; }
+function g(id){ return document.getElementById(id).value.trim(); }
+
+function validate(){
+  if(!g('f-name')) return 'Please enter your name.';
+  if(!g('f-tag'))  return 'Please enter your tagline.';
+  if(!g('f-bio'))  return 'Please write a short bio.';
+  if(!g('s0t'))    return 'Please add a title for Service 1.';
+  if(!g('s0d'))    return 'Please add a description for Service 1.';
+  if(!g('f-wa'))   return 'Please enter your WhatsApp number.';
   return null;
 }
 
-// ── GENERATE ──────────────────────────────────────────────────────────────────
-function generateAndDownload() {
+function generate(){
   const err = validate();
-  const valMsg = document.getElementById('val-msg');
-  if (err) {
-    valMsg.textContent = '⚠️ ' + err;
-    valMsg.style.display = 'block';
-    return;
-  }
-  valMsg.style.display = 'none';
+  const errEl = document.getElementById('err');
+  if(err){ errEl.textContent='⚠️ '+err; errEl.style.display='block'; return; }
+  errEl.style.display='none';
 
-  // collect values
-  const name      = document.getElementById('f-name').value.trim();
-  const nameZh    = document.getElementById('f-namezh').value.trim() || name;
-  const tagline   = document.getElementById('f-tagline').value.trim();
-  const taglineZh = document.getElementById('f-taglinezh').value.trim() || tagline;
-  const bio       = document.getElementById('f-bio').value.trim();
-  const bioZh     = document.getElementById('f-biozh').value.trim() || bio;
-  const stat1n    = document.getElementById('f-stat1n').value.trim() || '—';
-  const stat1l    = document.getElementById('f-stat1l').value.trim() || 'Clients';
-  const stat2n    = document.getElementById('f-stat2n').value.trim() || '—';
-  const stat2l    = document.getElementById('f-stat2l').value.trim() || 'Experience';
-  const waRaw     = document.getElementById('f-wa').value.trim().replace(/\D/g,'');
-  const waNum     = '60' + waRaw;
-  const email     = document.getElementById('f-email').value.trim() || '';
-  const ig        = document.getElementById('f-ig').value.trim() || '#';
-  const li        = document.getElementById('f-li').value.trim() || '#';
-  const badgesRaw = document.getElementById('f-badges').value.trim();
-  const badges    = badgesRaw ? badgesRaw.split(',').map(b=>b.trim()).filter(Boolean).slice(0,4) : [];
+  const name      = g('f-name');
+  const nameZh    = g('f-namezh') || name;
+  const tag       = g('f-tag');
+  const tagZh     = g('f-tagzh') || tag;
+  const bio       = g('f-bio').replace(/"/g,'\\"');
+  const bioZh     = (g('f-biozh')||g('f-bio')).replace(/"/g,'\\"');
+  const av        = g('f-av') || name[0].toUpperCase();
+  const s1n       = g('f-s1n') || '—';
+  const s1l       = g('f-s1l') || 'Clients';
+  const s1lz      = g('f-s1lz') || s1l;
+  const s2n       = g('f-s2n') || '—';
+  const s2l       = g('f-s2l') || 'Experience';
+  const s2lz      = g('f-s2lz') || s2l;
+  const badgesRaw = g('f-badges').split(',').map(x=>x.trim()).filter(Boolean).slice(0,4);
+  const badgesZhR = g('f-badgeszh').split(',').map(x=>x.trim()).filter(Boolean).slice(0,4);
+  const badgesEn  = badgesRaw.length ? badgesRaw : ['Professional','Trusted','Malaysia'];
+  const badgesZh  = badgesZhR.length ? badgesZhR : badgesEn;
+  const wa        = 'https://wa.me/60' + g('f-wa').replace(/\D/g,'');
+  const email     = g('f-email') || 'hello@email.com';
+  const ig        = g('f-ig') || 'https://instagram.com/';
+  const li        = g('f-li') || 'https://linkedin.com/';
 
-  // collect services (skip empty ones)
-  const services = [];
-  for (let i = 0; i < 3; i++) {
-    const t = document.getElementById(`s${i}-title`).value.trim();
-    const d = document.getElementById(`s${i}-desc`).value.trim();
-    if (t && d) {
-      services.push({
-        icon: selectedIcons[i],
-        title_en: t,
-        title_zh: document.getElementById(`s${i}-titlezh`).value.trim() || t,
-        desc_en: d,
-        desc_zh: document.getElementById(`s${i}-desczh`).value.trim() || d,
-      });
-    }
+  const svcs = [];
+  for(let i=0;i<3;i++){
+    const t=g('s'+i+'t'), d=g('s'+i+'d');
+    if(t&&d) svcs.push({icon:selIcons[i],title_en:t,title_zh:g('s'+i+'tz')||t,desc_en:d,desc_zh:g('s'+i+'dz')||d});
   }
 
-  const html = buildHTML({ name, nameZh, tagline, taglineZh, bio, bioZh,
-    stat1n, stat1l, stat2n, stat2l, waNum, email, ig, li, badges, services });
+  const config = `<script>
+const CONFIG = {
+  name:        "${name}",
+  nameZh:      "${nameZh}",
+  tagline_en:  "${tag}",
+  tagline_zh:  "${tagZh}",
+  bio_en:      "${bio}",
+  bio_zh:      "${bioZh}",
+  avatarLetter: "${av}",
+  stat1_num: "${s1n}", stat1_label_en: "${s1l}", stat1_label_zh: "${s1lz}",
+  stat2_num: "${s2n}", stat2_label_en: "${s2l}", stat2_label_zh: "${s2lz}",
+  badges_en: ${JSON.stringify(badgesEn)},
+  badges_zh: ${JSON.stringify(badgesZh)},
+  nav_links_en: ["Services", "Thoughts", "Contact"],
+  nav_links_zh: ["服务", "分享", "联系我"],
+  nav_anchors:  ["#services", "#thoughts", "#contact"],
+  services: ${JSON.stringify(svcs)},
+  posts: [
+    { date_en:"Add Date", date_zh:"填写日期", title_en:"Your First Post Title", title_zh:"您的第一篇文章", excerpt_en:"Edit this in your index.html to add your first blog post.", excerpt_zh:"在 index.html 中编辑此内容以添加您的第一篇文章。", tag_en:"General", tag_zh:"一般" }
+  ],
+  contact_whatsapp: "${wa}",
+  contact_email:    "${email}",
+  contact_instagram: "${ig}",
+  contact_linkedin:  "${li}",
+  footer_en: "© 2025 ${name} · Built with ❤️ in Malaysia",
+  footer_zh: "© 2025 ${nameZh} · 用 ❤️ 在马来西亚制作",
+};
+<\/script>\n\n</head>`;
 
-  // download
-  const blob = new Blob([html], { type: 'text/html' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'index.html';
-  a.click();
 
-  document.getElementById('success-msg').style.display = 'block';
-  document.getElementById('next-steps').style.display = 'block';
-  document.getElementById('next-steps').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-// ── HTML TEMPLATE ─────────────────────────────────────────────────────────────
-function buildHTML(d) {
-  const svcJS = JSON.stringify(d.services);
-  const badgesEN = JSON.stringify(d.badges.length ? d.badges : ['Professional','Trusted','Malaysia']);
-  const badgesZH = JSON.stringify(d.badges.length ? d.badges : ['专业','可信赖','马来西亚']);
-
-  return `<!DOCTYPE html>
+  const BEFORE = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${d.name}</title>
+<title id="page-title">My Personal Site</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#1a2744;--gold:#c9a84c;--gold-light:#f0d98a;--cream:#faf8f3;--text:#2c3452;--muted:#7a809a;--border:#e8e4da;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;}
-nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(250,248,243,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px;}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy);font-weight:600;}
-.nav-links{display:flex;gap:2rem;align-items:center;}
-.nav-links a{text-decoration:none;color:var(--muted);font-size:0.9rem;transition:color 0.2s;}
-.nav-links a:hover{color:var(--navy);}
-.lang-toggle{display:flex;gap:4px;background:var(--border);border-radius:20px;padding:3px;}
-.lang-btn{border:none;background:transparent;padding:4px 12px;border-radius:16px;font-size:0.8rem;cursor:pointer;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all 0.2s;}
-.lang-btn.active{background:var(--navy);color:white;}
-.hero{min-height:100vh;display:flex;align-items:center;padding:80px 5% 60px;background:linear-gradient(135deg,var(--cream) 60%,#eee9d8 100%);position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);border-radius:50%;}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.hero-tag{display:inline-block;background:rgba(201,168,76,0.15);color:var(--gold);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.2rem;border:1px solid rgba(201,168,76,0.3);}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.2;color:var(--navy);margin-bottom:1rem;}
-.hero-subtitle{font-size:1.05rem;color:var(--muted);margin-bottom:2rem;font-weight:300;}
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-primary{background:var(--navy);color:white;padding:12px 28px;border-radius:6px;text-decoration:none;font-size:0.9rem;font-weight:500;transition:all 0.2s;border:2px solid var(--navy);}
-.btn-primary:hover{background:#253460;transform:translateY(-1px);}
-.btn-outline{background:transparent;color:var(--navy);padding:12px 28px;border-radius:6px;text-decoration:none;font-size:0.9rem;font-weight:500;transition:all 0.2s;border:2px solid var(--navy);}
-.btn-outline:hover{background:var(--navy);color:white;}
-.hero-card{background:white;border-radius:16px;padding:2.5rem;box-shadow:0 8px 40px rgba(26,39,68,0.08);border:1px solid var(--border);}
-.avatar-ring{width:90px;height:90px;border-radius:50%;border:3px solid var(--gold);background:linear-gradient(135deg,var(--navy),#2c3e6e);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);margin:0 auto 1.2rem;}
-.hero-card h3{font-family:'Playfair Display',serif;text-align:center;font-size:1.3rem;color:var(--navy);margin-bottom:0.3rem;}
-.hero-card .role{text-align:center;color:var(--muted);font-size:0.88rem;margin-bottom:1.5rem;}
-.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
-.stat-box{background:var(--cream);border-radius:10px;padding:1rem;text-align:center;}
-.stat-num{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);font-weight:600;}
-.stat-label{font-size:0.75rem;color:var(--muted);}
-.trust-badges{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;}
-.badge{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:0.72rem;padding:3px 10px;border-radius:20px;}
-section{padding:80px 5%;}
-.section-inner{max-width:1100px;margin:0 auto;}
-.section-label{font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.3rem);color:var(--navy);margin-bottom:1rem;}
-.section-desc{color:var(--muted);max-width:520px;margin-bottom:3rem;}
-#services{background:white;}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
-.service-card{border:1px solid var(--border);border-radius:12px;padding:2rem;transition:all 0.25s;background:var(--cream);}
-.service-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 12px 30px rgba(26,39,68,0.07);}
-.service-icon{width:48px;height:48px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.2rem;}
-.service-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:0.6rem;}
-.service-card p{font-size:0.9rem;color:var(--muted);}
-#contact{background:var(--navy);}
-#contact .section-label{color:rgba(201,168,76,0.8);}
-#contact .section-title{color:white;}
-#contact .section-desc{color:rgba(255,255,255,0.5);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.contact-links{display:flex;flex-direction:column;gap:1rem;}
-.contact-link{display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.95rem;padding:1rem 1.2rem;background:rgba(255,255,255,0.05);border-radius:10px;border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;}
-.contact-link:hover{background:rgba(255,255,255,0.1);color:white;}
-.contact-form{display:flex;flex-direction:column;gap:1rem;}
-.form-input{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 16px;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;}
-.form-input::placeholder{color:rgba(255,255,255,0.3);}
-.form-input:focus{border-color:var(--gold);}
-textarea.form-input{resize:vertical;min-height:120px;}
-.btn-gold{background:var(--gold);color:var(--navy);border:none;padding:13px 28px;border-radius:6px;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.9rem;cursor:pointer;transition:all 0.2s;align-self:flex-start;}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);}
-footer{background:#111928;color:rgba(255,255,255,0.4);text-align:center;padding:2rem 5%;font-size:0.82rem;}
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-@media(max-width:768px){.hero-inner{grid-template-columns:1fr;}.hero-card{display:none;}.contact-grid{grid-template-columns:1fr;}.nav-links a{display:none;}}
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #f0d98a;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --text: #2c3452;
+    --muted: #7a809a;
+    --border: #e8e4da;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(250,248,243,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; color: var(--navy); font-weight: 600;
+  }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: 0.9rem;
+    font-weight: 400; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .lang-toggle {
+    display: flex; gap: 4px;
+    background: var(--border); border-radius: 20px; padding: 3px;
+  }
+  .lang-btn {
+    border: none; background: transparent; padding: 4px 12px;
+    border-radius: 16px; font-size: 0.8rem; cursor: pointer;
+    color: var(--muted); font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .lang-btn.active {
+    background: var(--navy); color: white;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px 5% 60px;
+    background: linear-gradient(135deg, var(--cream) 60%, #eee9d8 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.15); color: var(--gold);
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 1.2rem;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.2; color: var(--navy); margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; font-weight: 300;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--navy); color: white;
+    padding: 12px 28px; border-radius: 6px; text-decoration: none;
+    font-size: 0.9rem; font-weight: 500; transition: all 0.2s;
+    border: 2px solid var(--navy);
+  }
+  .btn-primary:hover { background: #253460; border-color: #253460; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--navy);
+    padding: 12px 28px; border-radius: 6px; text-decoration: none;
+    font-size: 0.9rem; font-weight: 500; transition: all 0.2s;
+    border: 2px solid var(--navy);
+  }
+  .btn-outline:hover { background: var(--navy); color: white; }
+
+  .hero-card {
+    background: white; border-radius: 16px;
+    padding: 2.5rem; box-shadow: 0 8px 40px rgba(26,39,68,0.08);
+    border: 1px solid var(--border); position: relative;
+  }
+  .avatar-ring {
+    width: 90px; height: 90px; border-radius: 50%;
+    border: 3px solid var(--gold);
+    background: linear-gradient(135deg, var(--navy), #2c3e6e);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold);
+    margin: 0 auto 1.2rem;
+  }
+  .hero-card h3 {
+    font-family: 'Playfair Display', serif; text-align: center;
+    font-size: 1.3rem; color: var(--navy); margin-bottom: 0.3rem;
+  }
+  .hero-card .role {
+    text-align: center; color: var(--muted); font-size: 0.88rem; margin-bottom: 1.5rem;
+  }
+  .stat-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .stat-box {
+    background: var(--cream); border-radius: 10px; padding: 1rem; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif; font-size: 1.6rem;
+    color: var(--navy); font-weight: 600;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); }
+  .trust-badges {
+    display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+  }
+  .badge {
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-size: 0.72rem; padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 80px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3vw, 2.3rem); color: var(--navy); margin-bottom: 1rem;
+  }
+  .section-desc { color: var(--muted); max-width: 520px; margin-bottom: 3rem; }
+
+  /* ── SERVICES ── */
+  #services { background: white; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .service-card {
+    border: 1px solid var(--border); border-radius: 12px; padding: 2rem;
+    transition: all 0.25s; background: var(--cream);
+  }
+  .service-card:hover {
+    border-color: var(--gold); transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(26,39,68,0.07);
+  }
+  .service-icon {
+    width: 48px; height: 48px; background: var(--navy);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1.2rem;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem;
+    color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .service-card p { font-size: 0.9rem; color: var(--muted); }
+
+  /* ── BLOG ── */
+  #thoughts { background: var(--cream); }
+  .posts-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+  }
+  .post-card {
+    background: white; border-radius: 12px; padding: 1.8rem;
+    border: 1px solid var(--border); transition: all 0.25s; cursor: pointer;
+  }
+  .post-card:hover { box-shadow: 0 8px 24px rgba(26,39,68,0.08); transform: translateY(-2px); }
+  .post-date { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .post-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.05rem;
+    color: var(--navy); margin-bottom: 0.5rem; line-height: 1.4;
+  }
+  .post-card p { font-size: 0.88rem; color: var(--muted); }
+  .post-tag {
+    display: inline-block; margin-top: 1rem;
+    background: rgba(26,39,68,0.07); color: var(--navy);
+    font-size: 0.72rem; padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); }
+  #contact .section-label { color: var(--gold-light); }
+  #contact .section-title { color: white; }
+  #contact .section-desc { color: rgba(255,255,255,0.5); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.95rem; padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.05); border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08); transition: all 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.1); color: white; }
+  .contact-icon { font-size: 1.2rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-input {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 12px 16px; color: white;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.3); }
+  .form-input:focus { border-color: var(--gold); }
+  textarea.form-input { resize: vertical; min-height: 120px; }
+  .btn-gold {
+    background: var(--gold); color: var(--navy); border: none;
+    padding: 13px 28px; border-radius: 6px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s; align-self: flex-start;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111928; color: rgba(255,255,255,0.4);
+    text-align: center; padding: 2rem 5%; font-size: 0.82rem;
+  }
+  footer span { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-card { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links a { display: none; }
+  }
+
+  /* ── FADE IN ── */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
-</head>
+
+<!-- ═══════════════════════════════════════════════
+     CONFIG — Edit this section only!
+     朋友们只需要修改这里的内容就可以了！
+     ═══════════════════════════════════════════════ -->
+`;
+  const AFTER  = `
 <body>
+
+<!-- NAV -->
 <nav>
   <div class="nav-logo" id="nav-logo"></div>
   <div class="nav-links" id="nav-links"></div>
@@ -576,6 +567,8 @@ footer{background:#111928;color:rgba(255,255,255,0.4);text-align:center;padding:
     <button class="lang-btn" onclick="setLang('ms')">BM</button>
   </div>
 </nav>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="fade-in">
@@ -584,7 +577,7 @@ footer{background:#111928;color:rgba(255,255,255,0.4);text-align:center;padding:
       <p class="hero-subtitle" id="hero-bio"></p>
       <div class="hero-cta">
         <a href="#contact" class="btn-primary" id="btn-consult"></a>
-        <a href="#services" class="btn-outline" id="btn-svc"></a>
+        <a href="#thoughts" class="btn-outline" id="btn-read"></a>
       </div>
     </div>
     <div class="hero-card fade-in">
@@ -592,13 +585,21 @@ footer{background:#111928;color:rgba(255,255,255,0.4);text-align:center;padding:
       <h3 id="card-name"></h3>
       <p class="role" id="card-role"></p>
       <div class="stat-row">
-        <div class="stat-box"><div class="stat-num">${d.stat1n}</div><div class="stat-label" id="stat1-label"></div></div>
-        <div class="stat-box"><div class="stat-num">${d.stat2n}</div><div class="stat-label" id="stat2-label"></div></div>
+        <div class="stat-box">
+          <div class="stat-num" id="stat1-num"></div>
+          <div class="stat-label" id="stat1-label"></div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="stat2-num"></div>
+          <div class="stat-label" id="stat2-label"></div>
+        </div>
       </div>
       <div class="trust-badges" id="trust-badges"></div>
     </div>
   </div>
 </section>
+
+<!-- SERVICES -->
 <section id="services">
   <div class="section-inner fade-in">
     <div class="section-label" id="svc-label"></div>
@@ -607,6 +608,18 @@ footer{background:#111928;color:rgba(255,255,255,0.4);text-align:center;padding:
     <div class="services-grid" id="services-grid"></div>
   </div>
 </section>
+
+<!-- THOUGHTS -->
+<section id="thoughts">
+  <div class="section-inner fade-in">
+    <div class="section-label" id="post-label"></div>
+    <h2 class="section-title" id="post-title"></h2>
+    <p class="section-desc" id="post-desc"></p>
+    <div class="posts-grid" id="posts-grid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner fade-in">
     <div class="contact-grid">
@@ -618,30 +631,224 @@ footer{background:#111928;color:rgba(255,255,255,0.4);text-align:center;padding:
       </div>
       <div class="contact-form">
         <input class="form-input" id="form-name" type="text" placeholder="Your name">
-        <input class="form-input" id="form-phone" type="tel" placeholder="Phone / WhatsApp">
+        <input class="form-input" id="form-email" type="email" placeholder="Email address">
         <textarea class="form-input" id="form-msg" placeholder="Your message..."></textarea>
         <button class="btn-gold" id="btn-send" onclick="sendMsg()"></button>
       </div>
     </div>
   </div>
 </section>
+
 <footer id="footer-text"></footer>
+
 <script>
-const C={name:"${d.name}",nameZh:"${d.nameZh}",tagline:"${d.tagline}",taglineZh:"${d.taglineZh}",bio:"${d.bio.replace(/"/g,'&quot;').replace(/\n/g,' ')}",bioZh:"${d.bioZh.replace(/"/g,'&quot;').replace(/\n/g,' ')}",stat1l:"${d.stat1l}",stat1lZh:"${d.stat1l}",stat2l:"${d.stat2l}",stat2lZh:"${d.stat2l}",wa:"${d.waNum}",email:"${d.email}",ig:"${d.ig}",li:"${d.li}",badgesEn:${badgesEN},badgesZh:${badgesZH},services:${svcJS}};
-const T={en:{tag:"Welcome",h1:"Hi, I'm "+C.name,bio:C.bio,consult:"Get In Touch",svc:"See My Services",stat1:C.stat1l,stat2:C.stat2l,badges:C.badgesEn,svcLabel:"What I Offer",svcTitle:"Services",svcDesc:"Here to help you at every step.",ctcLabel:"Get In Touch",ctcTitle:"Let's Talk",ctcDesc:"Have a question? I'd love to hear from you.",send:"Send via WhatsApp",footer:"© 2025 "+C.name+" · Made in Malaysia"},zh:{tag:"欢迎",h1:"你好，我是 "+C.nameZh,bio:C.bioZh,consult:"联系我",svc:"查看服务",stat1:C.stat1lZh,stat2:C.stat2lZh,badges:C.badgesZh,svcLabel:"我的服务",svcTitle:"服务项目",svcDesc:"在您的每一步，我都在这里。",ctcLabel:"联系我",ctcTitle:"让我们谈谈",ctcDesc:"有任何问题吗？我很乐意听到您的声音。",send:"通过WhatsApp发送",footer:"© 2025 "+C.nameZh+" · 在马来西亚制作"},ms:{tag:"Selamat Datang",h1:"Hi, Saya "+C.name,bio:C.bio,consult:"Hubungi Saya",svc:"Lihat Perkhidmatan",stat1:C.stat1l,stat2:C.stat2l,badges:C.badgesEn,svcLabel:"Perkhidmatan",svcTitle:"Apa Yang Saya Tawarkan",svcDesc:"Di sini untuk membantu anda.",ctcLabel:"Hubungi",ctcTitle:"Mari Berbincang",ctcDesc:"Ada soalan? Saya ingin mendengar daripada anda.",send:"Hantar via WhatsApp",footer:"© 2025 "+C.name+" · Dibuat di Malaysia"}};
-let lang='en';
-function setLang(l){lang=l;document.querySelectorAll('.lang-btn').forEach((b,i)=>{b.classList.toggle('active',['en','zh','ms'][i]===l);});render(T[l]);}
-function render(t){const zh=lang==='zh';document.getElementById('nav-logo').textContent=C.name;document.getElementById('nav-links').innerHTML=['Services','Thoughts','Contact'].map((x,i)=>{const labels={en:['Services','Contact'],zh:['服务','联系我'],ms:['Perkhidmatan','Hubungi']};return'<a href="'+(i===0?'#services':'#contact')+'">'+x+'</a>';}).join('');document.getElementById('hero-tag').textContent=t.tag;document.getElementById('hero-h1').textContent=t.h1;document.getElementById('hero-bio').textContent=t.bio;document.getElementById('btn-consult').textContent=t.consult;document.getElementById('btn-svc').textContent=t.svc;document.getElementById('avatar-ring').textContent=C.name[0].toUpperCase();document.getElementById('card-name').textContent=zh?C.nameZh:C.name;document.getElementById('card-role').textContent=zh?C.taglineZh:C.tagline;document.getElementById('stat1-label').textContent=t.stat1;document.getElementById('stat2-label').textContent=t.stat2;document.getElementById('trust-badges').innerHTML=t.badges.map(b=>'<span class="badge">'+b+'</span>').join('');document.getElementById('svc-label').textContent=t.svcLabel;document.getElementById('svc-title').textContent=t.svcTitle;document.getElementById('svc-desc').textContent=t.svcDesc;document.getElementById('services-grid').innerHTML=C.services.map(s=>'<div class="service-card"><div class="service-icon">'+s.icon+'</div><h3>'+(zh?s.title_zh:s.title_en)+'</h3><p>'+(zh?s.desc_zh:s.desc_en)+'</p></div>').join('');document.getElementById('ctc-label').textContent=t.ctcLabel;document.getElementById('ctc-title').textContent=t.ctcTitle;document.getElementById('ctc-desc').textContent=t.ctcDesc;const links=[];if(C.wa)links.push('<a href="https://wa.me/'+C.wa+'" class="contact-link" target="_blank"><span>💬</span>'+(zh?'WhatsApp 联系':'WhatsApp Me')+'</a>');if(C.email)links.push('<a href="mailto:'+C.email+'" class="contact-link"><span>📧</span>'+C.email+'</a>');if(C.ig&&C.ig!=='#')links.push('<a href="'+C.ig+'" class="contact-link" target="_blank"><span>📸</span>Instagram</a>');if(C.li&&C.li!=='#')links.push('<a href="'+C.li+'" class="contact-link" target="_blank"><span>💼</span>LinkedIn</a>');document.getElementById('contact-links').innerHTML=links.join('');document.getElementById('btn-send').textContent=t.send;document.getElementById('footer-text').textContent=t.footer;}
-function sendMsg(){const n=document.getElementById('form-name').value;const p=document.getElementById('form-phone').value;const m=document.getElementById('form-msg').value;window.open('https://wa.me/'+C.wa+'?text='+encodeURIComponent('Hi '+C.name+', I am '+n+(p?' ('+p+')'':'')+'.\\n\\n'+m),'_blank');}
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
-render(T.en);
-<\/script>
-</body>
-</html>`;
+// ─── TRANSLATIONS ───────────────────────────────────────────────────────────
+const T = {
+  en: {
+    hero_tag:    "Welcome",
+    hero_h1:     \`Hi, I'm \${CONFIG.name}\`,
+    hero_bio:    CONFIG.bio_en,
+    btn_consult: "Book Free Consultation",
+    btn_read:    "Read My Thoughts",
+    card_name:   CONFIG.name,
+    card_role:   CONFIG.tagline_en,
+    stat1_label: CONFIG.stat1_label_en,
+    stat2_label: CONFIG.stat2_label_en,
+    badges:      CONFIG.badges_en,
+    svc_label:   "What I Offer",
+    svc_title:   "Services",
+    svc_desc:    "Here to guide you at every step of your financial journey.",
+    post_label:  "My Writing",
+    post_title:  "Thoughts & Insights",
+    post_desc:   "Honest takes on money, life, and everything in between.",
+    ctc_label:   "Get In Touch",
+    ctc_title:   "Let's Talk",
+    ctc_desc:    "Whether you have questions or just want to say hi, I'd love to hear from you.",
+    btn_send:    "Send Message",
+    footer:      CONFIG.footer_en,
+    form_name:   "Your name",
+    form_email:  "Email address",
+    form_msg:    "Your message...",
+    ctc_links: [
+      { icon: "💬", label: "WhatsApp Me", href: CONFIG.contact_whatsapp },
+      { icon: "📧", label: CONFIG.contact_email, href: \`mailto:\${CONFIG.contact_email}\` },
+      { icon: "📸", label: "Instagram", href: CONFIG.contact_instagram },
+      { icon: "💼", label: "LinkedIn", href: CONFIG.contact_linkedin },
+    ]
+  },
+  zh: {
+    hero_tag:    "欢迎",
+    hero_h1:     \`你好，我是 \${CONFIG.nameZh || CONFIG.name}\`,
+    hero_bio:    CONFIG.bio_zh,
+    btn_consult: "预约免费咨询",
+    btn_read:    "阅读我的分享",
+    card_name:   CONFIG.nameZh || CONFIG.name,
+    card_role:   CONFIG.tagline_zh,
+    stat1_label: CONFIG.stat1_label_zh,
+    stat2_label: CONFIG.stat2_label_zh,
+    badges:      CONFIG.badges_zh,
+    svc_label:   "我的服务",
+    svc_title:   "服务项目",
+    svc_desc:    "在您财务之旅的每一步，我都在这里为您提供指导。",
+    post_label:  "我的文章",
+    post_title:  "想法与见解",
+    post_desc:   "关于金钱、生活的真实想法。",
+    ctc_label:   "联系我",
+    ctc_title:   "让我们谈谈",
+    ctc_desc:    "无论您有任何问题，还是只是想打个招呼，我很乐意听到您的声音。",
+    btn_send:    "发送消息",
+    footer:      CONFIG.footer_zh,
+    form_name:   "您的姓名",
+    form_email:  "电子邮件",
+    form_msg:    "您的留言...",
+    ctc_links: [
+      { icon: "💬", label: "WhatsApp 联系", href: CONFIG.contact_whatsapp },
+      { icon: "📧", label: CONFIG.contact_email, href: \`mailto:\${CONFIG.contact_email}\` },
+      { icon: "📸", label: "Instagram", href: CONFIG.contact_instagram },
+      { icon: "💼", label: "领英", href: CONFIG.contact_linkedin },
+    ]
+  },
+  ms: {
+    hero_tag:    "Selamat Datang",
+    hero_h1:     \`Hi, Saya \${CONFIG.name}\`,
+    hero_bio:    CONFIG.bio_en,
+    btn_consult: "Tempah Konsultasi Percuma",
+    btn_read:    "Baca Tulisan Saya",
+    card_name:   CONFIG.name,
+    card_role:   CONFIG.tagline_en,
+    stat1_label: "Pelanggan",
+    stat2_label: "Tahun Pengalaman",
+    badges:      CONFIG.badges_en,
+    svc_label:   "Perkhidmatan",
+    svc_title:   "Apa Yang Saya Tawarkan",
+    svc_desc:    "Membantu anda dalam setiap langkah perjalanan kewangan anda.",
+    post_label:  "Penulisan",
+    post_title:  "Fikiran & Pandangan",
+    post_desc:   "Pandangan jujur tentang wang, kehidupan dan segalanya.",
+    ctc_label:   "Hubungi Saya",
+    ctc_title:   "Mari Berbincang",
+    ctc_desc:    "Sama ada anda ada soalan atau hanya ingin menyapa, saya ingin mendengar daripada anda.",
+    btn_send:    "Hantar Mesej",
+    footer:      CONFIG.footer_en,
+    form_name:   "Nama anda",
+    form_email:  "Alamat emel",
+    form_msg:    "Mesej anda...",
+    ctc_links: [
+      { icon: "💬", label: "WhatsApp Saya", href: CONFIG.contact_whatsapp },
+      { icon: "📧", label: CONFIG.contact_email, href: \`mailto:\${CONFIG.contact_email}\` },
+      { icon: "📸", label: "Instagram", href: CONFIG.contact_instagram },
+      { icon: "💼", label: "LinkedIn", href: CONFIG.contact_linkedin },
+    ]
+  }
+};
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach((b,i) => {
+    b.classList.toggle('active', ['en','zh','ms'][i] === lang);
+  });
+  render(T[lang]);
 }
+
+function render(t) {
+  const isZh = currentLang === 'zh';
+
+  // nav
+  document.getElementById('nav-logo').textContent = CONFIG.name;
+  document.getElementById('nav-links').innerHTML = CONFIG.nav_links_en
+    .map((l,i) => \`<a href="\${CONFIG.nav_anchors[i]}">\${currentLang==='zh'?CONFIG.nav_links_zh[i]:currentLang==='ms'?['Perkhidmatan','Penulisan','Hubungi'][i]:l}</a>\`)
+    .join('');
+
+  // hero
+  document.getElementById('hero-tag').textContent = t.hero_tag;
+  document.getElementById('hero-h1').textContent = t.hero_h1;
+  document.getElementById('hero-bio').textContent = t.hero_bio;
+  document.getElementById('btn-consult').textContent = t.btn_consult;
+  document.getElementById('btn-read').textContent = t.btn_read;
+
+  // card
+  document.getElementById('avatar-ring').textContent = CONFIG.avatarLetter;
+  document.getElementById('card-name').textContent = t.card_name;
+  document.getElementById('card-role').textContent = t.card_role;
+  document.getElementById('stat1-num').textContent = CONFIG.stat1_num;
+  document.getElementById('stat1-label').textContent = t.stat1_label;
+  document.getElementById('stat2-num').textContent = CONFIG.stat2_num;
+  document.getElementById('stat2-label').textContent = t.stat2_label;
+  document.getElementById('trust-badges').innerHTML = t.badges.map(b=>\`<span class="badge">\${b}</span>\`).join('');
+
+  // services
+  document.getElementById('svc-label').textContent = t.svc_label;
+  document.getElementById('svc-title').textContent = t.svc_title;
+  document.getElementById('svc-desc').textContent = t.svc_desc;
+  document.getElementById('services-grid').innerHTML = CONFIG.services.map(s => \`
+    <div class="service-card">
+      <div class="service-icon">\${s.icon}</div>
+      <h3>\${isZh ? s.title_zh : s.title_en}</h3>
+      <p>\${isZh ? s.desc_zh : s.desc_en}</p>
+    </div>\`).join('');
+
+  // posts
+  document.getElementById('post-label').textContent = t.post_label;
+  document.getElementById('post-title').textContent = t.post_title;
+  document.getElementById('post-desc').textContent = t.post_desc;
+  document.getElementById('posts-grid').innerHTML = CONFIG.posts.map(p => \`
+    <div class="post-card">
+      <div class="post-date">\${isZh ? p.date_zh : p.date_en}</div>
+      <h3>\${isZh ? p.title_zh : p.title_en}</h3>
+      <p>\${isZh ? p.excerpt_zh : p.excerpt_en}</p>
+      <span class="post-tag">\${isZh ? p.tag_zh : p.tag_en}</span>
+    </div>\`).join('');
+
+  // contact
+  document.getElementById('ctc-label').textContent = t.ctc_label;
+  document.getElementById('ctc-title').textContent = t.ctc_title;
+  document.getElementById('ctc-desc').textContent = t.ctc_desc;
+  document.getElementById('contact-links').innerHTML = t.ctc_links.map(l=>\`
+    <a href="\${l.href}" class="contact-link" target="_blank">
+      <span class="contact-icon">\${l.icon}</span>\${l.label}
+    </a>\`).join('');
+  document.getElementById('btn-send').textContent = t.btn_send;
+  document.getElementById('form-name').placeholder = t.form_name;
+  document.getElementById('form-email').placeholder = t.form_email;
+  document.getElementById('form-msg').placeholder = t.form_msg;
+
+  // footer
+  document.getElementById('footer-text').innerHTML = t.footer.replace('❤️','<span>❤️</span>');
+}
+
+function sendMsg() {
+  const name = document.getElementById('form-name').value;
+  const msg  = document.getElementById('form-msg').value;
+  const text = encodeURIComponent(\`Hi \${CONFIG.name}, I'm \${name}.\\n\\n\${msg}\`);
+  window.open(\`https://wa.me/\${CONFIG.contact_whatsapp.replace(/\\D/g,'')}?text=\${text}\`, '_blank');
+}
+
+// ─── SCROLL ANIMATIONS ───────────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+render(T.en);
 </script>
 </body>
-</html>`;
+</html>
+`;
+
+  const html = BEFORE + config + AFTER;
+  const blob = new Blob([html], {type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index.html';
+  a.click();
+
+  document.getElementById('ok').style.display = 'block';
+  document.getElementById('steps').style.display = 'block';
+  document.getElementById('steps').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 </script>
 </body>
